@@ -3,9 +3,9 @@ Simplified local M-smoother (SLMS) for robust nonparametric regression with miss
 Based on affane (2024) and Boente et al. (2009).
 """
 import numpy as np
-from scipy.tats import median_abs_deviation
+from scipy.stats import median_abs_deviation
 
-def slms_estimator(x, y, delta, x0, h, k=1.345, tol=1e-6, max_iter=100):
+def slms_estimator(x, y, delta, x0, h, psi,k=1.345, tol=1e-6, max_iter=100):
     """
     Estimate m(x0) using the Simplified Local M-Smoother (SLMS).
     
