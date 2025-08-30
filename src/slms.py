@@ -5,7 +5,7 @@ Based on affane (2024) and Boente et al. (2009).
 import numpy as np
 from scipy.stats import median_abs_deviation
 
-def slms_estimator(x, y, delta, x0, h,psi,kernel, k=1.345, tol=1e-6, max_iter=100):
+def slms_estimator(x, y, delta, x0, h, psi, kernel, k=1.345, tol=1e-6, max_iter=100):
     """
     Estimate m(x0) using the Simplified Local M-Smoother (SLMS).
     
@@ -45,7 +45,7 @@ def slms_estimator(x, y, delta, x0, h,psi,kernel, k=1.345, tol=1e-6, max_iter=10
     for iteration in range(max_iter):
         residuals = y - m_hat
         scaled_residuals = residuals / (sigma_hat + 1e-8)
-        psi_values = psi(scaled_residuals)
+        psi_vals = psi(scaled_residuals)
 
         # Compute u_weights = psi(u) / u if u != 0 else psi'(0)
         with np.errstate(divide='ignore', invalid='ignore'):
@@ -63,7 +63,7 @@ def slms_estimator(x, y, delta, x0, h,psi,kernel, k=1.345, tol=1e-6, max_iter=10
         m_hat_new = np.average(y, weights=final_weights)
 
         if abs(m_hat_new - m_hat) < tol:
-            m_hat = n_hat_new
+            m_hat = m_hat_new
             break
 
         m_hat = m_hat_new
