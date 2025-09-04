@@ -41,20 +41,24 @@ Performance will be evaluated using **MISE** (Mean Integrated Squared Error) at 
 
 ## Project Structure
 RobustNonparametricRegression/
-├── src/
+├── src/ # Core source code
 │ ├── data_simulation.py # Generate data and MAR mechanism
 │ ├── slms.py # Simplified Local M-Smoother
 │ ├── ilms.py # Imputed Local M-Smoother
 │ └── evaluation.py # Compute MISE, generate plots
-├── notebooks/
+│
+├── notebooks/ # Jupyter notebooks
 │ └── full_simulation.ipynb # End-to-end simulation
-├── results/
+│
+├── results/ # Outputs of experiments
 │ ├── plots/ # Estimation curves, MISE comparison
 │ └── metrics.csv # Performance metrics
-├── docs/
+│
+├── docs/ # Documentation
 │ └── Estimation non paramétrique robuste de la régression pour des données manquantes.pdf
-├── README.md
-└── requirements.txt
+│
+├── README.md # Project description
+└── requirements.txt # Dependencies
 
 ## Results
 
