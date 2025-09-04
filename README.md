@@ -20,6 +20,15 @@ First, imputes missing responses using SLMS, then applies a second robust smooth
 
 Both methods are consistent and asymptotically normal under MAR and contamination.
 
+## Simulation Design
+
+The simulation will reproduce the setup from chapter 4 of my thesis:
+- $ y_i = 0.25 \sin(\pi x_i) + \epsilon_i $
+- $ \epsilion_i $: mixture of $ \mathcal{N}(0, \sigma^2) $ and $ \mathcal{N}(0, 25\sigma^2) $
+- missingness mechanism: $ p(x) = 0.3 + 0.5 \sin^2(5(x + 0.2)) $ (MAR)
+
+Performance will be evaluated using **MISE** (Mean Integrated Squared Error) at contamination levels $ \eta = 0\%, 10\%, 20\%$.
+
 ## References
 - **Affane, I. (2024)**.
   *Estimation non paramétique robuste de la régression pour des données manquantes*.
@@ -29,3 +38,35 @@ Both methods are consistent and asymptotically normal under MAR and contaminatio
   *Robust nonparametric estimation with missing data*.
   Journal of Statistical Planning and Inference, 139(2), 571-592.
   [DOI:10.1016/j.jspi.2008.02.019](https://doi.org/10.1016/j.jspi.2008.02.019)
+
+## Project Structure
+RobustNonparametricRegression/
+├── src/
+│ ├── data_simulation.py # Generate data and MAR mechanism
+│ ├── slms.py # Simplified Local M-Smoother
+│ ├── ilms.py # Imputed Local M-Smoother
+│ └── evaluation.py # Compute MISE, generate plots
+├── notebooks/
+│ └── full_simulation.ipynb # End-to-end simulation
+├── results/
+│ ├── plots/ # Estimation curves, MISE comparison
+│ └── metrics.csv # Performance metrics
+├── docs/
+│ └── thesis.pdf
+├── README.md
+└── requirements.txt
+
+## Results
+
+After 200 replications, the Mean Integrated Squared Error (MISE) is:
+
+| Estimator | MISE |
+|---------|------|
+| SLMS | 0.0171 |
+| ILMS | 0.0203 |
+| Nadaraya-Watson | 0.0429 |
+
+> **Robust estimators (SLMS/ILMS) outperform the classical Nadaraya-Watson under contamination and MAR.**
+> **SLMS achieves the best performance.**
+
+![Comparison](results/plots/comparison_all.png)

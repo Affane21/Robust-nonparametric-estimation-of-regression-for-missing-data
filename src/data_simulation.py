@@ -1,7 +1,7 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 import seaborn as sns
-np.random.seed(42) 
+np.random.seed(39) 
 def data_simulation(n=100,sigma=0.5,eta=0.1):
     """
     Simulate data for regression with missing responses.
