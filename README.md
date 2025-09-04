@@ -52,7 +52,7 @@ RobustNonparametricRegression/
 │ ├── plots/ # Estimation curves, MISE comparison
 │ └── metrics.csv # Performance metrics
 ├── docs/
-│ └── thesis.pdf
+│ └── Estimation non paramétrique robuste de la régression pour des données manquantes.pdf
 ├── README.md
 └── requirements.txt
 
