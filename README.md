@@ -40,25 +40,54 @@ Performance will be evaluated using **MISE** (Mean Integrated Squared Error) at 
   [DOI:10.1016/j.jspi.2008.02.019](https://doi.org/10.1016/j.jspi.2008.02.019)
 
 ## Project Structure
-RobustNonparametricRegression/
-├── src/ # Core source code
-│ ├── data_simulation.py # Generate data and MAR mechanism
-│ ├── slms.py # Simplified Local M-Smoother
-│ ├── ilms.py # Imputed Local M-Smoother
-│ └── evaluation.py # Compute MISE, generate plots
-│
-├── notebooks/ # Jupyter notebooks
-│ └── full_simulation.ipynb # End-to-end simulation
-│
-├── results/ # Outputs of experiments
-│ ├── plots/ # Estimation curves, MISE comparison
-│ └── metrics.csv # Performance metrics
-│
-├── docs/ # Documentation
-│ └── Estimation non paramétrique robuste de la régression pour des données manquantes.pdf
-│
-├── README.md # Project description
-└── requirements.txt # Dependencies
+  RobustNonparametricRegression/
+  ├── src/ # Core source code
+  │ ├── data_simulation.py # Generate data and MAR mechanism
+  │ ├── slms.py # Simplified Local M-Smoother
+  │ ├── ilms.py # Imputed Local M-Smoother
+  │ └── evaluation.py # Compute MISE, generate plots
+  │
+  ├── notebooks/ # Jupyter notebooks
+  │ └── full_simulation.ipynb # End-to-end simulation
+  │
+  ├── results/ # Outputs of experiments
+  │ ├── plots/ # Estimation curves, MISE comparison
+  │ └── metrics.csv # Performance metrics
+  │
+  ├── docs/ # Documentation
+  │ └── Estimation non paramétrique robuste de la régression pour des données manquantes.pdf
+  │
+  ├── README.md # Project description
+  └── requirements.txt # Dependencies
+
+## 💼 Business Applications & Real-World Use Cases
+
+This robust nonparametric regression framework is designed to handle two common challenges in real-world  **missing values under MAR mechanism** and **outlier contamination**. Below are practical scenarios where this approach adds immediate value:
+
+| Industry | Use Case | Business Impact |
+|----------|----------|----------------|
+| 🏥 **Healthcare & Epidemiology** | Modeling patient outcomes when lab results are missing or corrupted | Enables reliable risk stratification without discarding incomplete records — critical for resource-limited settings |
+| 💳 **Financial Risk Modeling** | Credit scoring or fraud detection with noisy, incomplete transaction data | Reduces false positives/negatives by using robust estimators less sensitive to extreme values |
+| 🛒 **E-Commerce & Marketing** | Customer lifetime value prediction with partial behavioral data | Improves targeting accuracy by leveraging all available signals, even when some features are missing |
+| 📊 **Survey Research & Public Policy** | Analyzing socioeconomic indicators from surveys with non-response bias | Produces more representative estimates for policy decisions by accounting for MAR mechanisms |
+| 🏭 **Industrial Quality Control** | Predicting equipment failure from sensor data with dropouts or anomalies | Supports proactive maintenance decisions despite imperfect data streams |
+
+### 🔑 Why This Matters for Data Teams
+
+## 💼 التطبيقات العملية وحالات الاستخدام الواقعية
+
+صُمم هذا الإطار الإحصائي القوي لمعالجة تحديين شائعين في البيانات الواقعية: **القيم المفقودة وفق آلية MAR** و**وجود قيم شاذة**. فيما يلي سيناريوهات عملية يضيف فيها هذا النهج قيمة فورية:
+
+| القطاع | حالة الاستخدام | الأثر التجاري |
+|--------|---------------|--------------|
+| 🏥 **الرعاية الصحية** | نمذجة نتائج المرضى عند وجود فحوصات مخبرية ناقصة | تمكين تقييم المخاطر بشكل موثوق دون حذف السجلات غير المكتملة |
+| 💳 **النمذجة المالية** | تقييم الجدارة الائتمانية مع بيانات معاملات ناقصة أو ضوضائية | تقليل الأخطاء في الكشف عن الاحتيال باستخدام مقدرات مقاومة للقيم المتطرفة |
+| 🛒 **التجارة الإلكترونية** | التنبؤ بالقيمة الدائمة للعميل مع بيانات سلوكية جزئية | تحسين دقة الاستهداف التسويقي بالاستفادة من كل الإشارات المتاحة |
+| 📊 **الاستطلاعات والسياسات العامة** | تحليل مؤشرات اجتماعية-اقتصادية من استبيانات فيها عدم استجابة | إنتاج تقديرات أكثر تمثيلاً لدعم قرارات السياسات العامة |
+| 🏭 **مراقبة الجودة الصناعية** | التنبؤ بأعطال المعدات من بيانات أجهزة استشعار فيها انقطاع أو شذوذ | دعم قرارات الصيانة الوقائية رغم عدم كمال جودة البيانات |
+
+### 🔑 لماذا يهم هذا فرق البيانات؟
+
 
 ## Results
 
@@ -74,3 +103,21 @@ After 200 replications, the Mean Integrated Squared Error (MISE) is:
 > **SLMS achieves the best performance.**
 
 ![Comparison](results/plots/comparison_all.png)
+
+
+### 🚀 Quick Integration Example
+
+```python
+# After installing requirements:
+from src.slms import SLMS
+from src.data_simulation import generate_mar_data
+
+# Generate or load your data (with missing values)
+X, Y, mask = generate_mar_data(n=200, missing_rate=0.3, contamination=0.1)
+
+# Fit the robust estimator
+model = SLMS(bandwidth=0.3)
+model.fit(X, Y, mask)
+
+# Predict on new data
+predictions = model.predict(X_new)
