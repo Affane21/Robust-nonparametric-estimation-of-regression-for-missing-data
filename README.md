@@ -40,6 +40,7 @@ Performance will be evaluated using **MISE** (Mean Integrated Squared Error) at 
   [DOI:10.1016/j.jspi.2008.02.019](https://doi.org/10.1016/j.jspi.2008.02.019)
 
 ### 📁 Project Structure
+
 ```text
 📦 Robust-nonparametric-estimation-of-regression-for-missing-data
 ├── 📂 src/                 # Core Python modules
