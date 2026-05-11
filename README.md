@@ -53,7 +53,7 @@ Performance will be evaluated using **MISE** (Mean Integrated Squared Error) at 
 ├── 📜 requirements.txt     # Python dependencies
 ├── 📜 README.md            # Project documentation
 └── 📜 thesis_reference.pdf # Boente et al. (2009) citation
-
+```text
 ## 💼 Business Applications & Real-World Use Cases
 
 This robust nonparametric regression framework is designed to handle two common challenges in real-world  **missing values under MAR mechanism** and **outlier contamination**. Below are practical scenarios where this approach adds immediate value:
