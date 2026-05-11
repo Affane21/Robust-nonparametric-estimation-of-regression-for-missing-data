@@ -39,27 +39,20 @@ Performance will be evaluated using **MISE** (Mean Integrated Squared Error) at 
   Journal of Statistical Planning and Inference, 139(2), 571-592.
   [DOI:10.1016/j.jspi.2008.02.019](https://doi.org/10.1016/j.jspi.2008.02.019)
 
-## Project Structure
-  RobustNonparametricRegression/
-  ├── src/ # Core source code
-  │ ├── data_simulation.py # Generate data and MAR mechanism
-  │ ├── slms.py # Simplified Local M-Smoother
-  │ ├── ilms.py # Imputed Local M-Smoother
-  │ └── evaluation.py # Compute MISE, generate plots
-  │
-  ├── notebooks/ # Jupyter notebooks
-  │ └── full_simulation.ipynb # End-to-end simulation
-  │
-  ├── results/ # Outputs of experiments
-  │ ├── plots/ # Estimation curves, MISE comparison
-  │ └── metrics.csv # Performance metrics
-  │
-  ├── docs/ # Documentation
-  │ └── Estimation non paramétrique robuste de la régression pour des données manquantes.pdf
-  │
-  ├── README.md # Project description
-  └── requirements.txt # Dependencies
-
+### 📁 Project Structure
+```text
+📦 Robust-nonparametric-estimation-of-regression-for-missing-data
+├── 📂 src/                 # Core Python modules
+│   ├── __init__.py
+│   ├── slms.py             # SLMS robust estimator
+│   ├── ilms.py             # ILMS robust estimator
+│   └── data_simulation.py  # MAR mechanism & data generation
+├── 📂 notebooks/           # Jupyter workflows & simulations
+│   └── full_simulation.ipynb
+├── 📂 results/             # Output figures & MISE tables
+├── 📜 requirements.txt     # Python dependencies
+├── 📜 README.md            # Project documentation
+└── 📜 thesis_reference.pdf # Boente et al. (2009) citation
 ## 💼 Business Applications & Real-World Use Cases
 
 This robust nonparametric regression framework is designed to handle two common challenges in real-world  **missing values under MAR mechanism** and **outlier contamination**. Below are practical scenarios where this approach adds immediate value:
